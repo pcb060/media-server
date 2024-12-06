@@ -18,6 +18,8 @@ services:
     image: lissy93/dashy:latest
     container_name: dashy
     environment:
+      - PUID=1000
+      - PGID=1000
       - TZ=Europe/Rome
     volumes:
       - ${HOME}/server/configs/dashy/conf.yaml:/app/user-data/conf.yaml   # Store Dashy config
