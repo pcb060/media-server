@@ -7,9 +7,9 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/bazarr:/config
-      - ${HOME}/server/media/library/movies:/movies
-      - ${HOME}/server/media/library/series:/tvshows
+      - ./configs/bazarr:/config
+      - ./media/library/movies:/movies
+      - ./media/library/series:/tvshows
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -22,7 +22,7 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/dashy/conf.yaml:/app/user-data/conf.yaml   # Store Dashy config
+      - ./configs/dashy:/app/user-data # Store Dashy config
     ports:
       - 4000:8080
     restart: unless-stopped
@@ -34,7 +34,7 @@ services:
       - LOG_LEVEL=info
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/flaresolverr:/config   # Store FlareSolverr config
+      - ./configs/flaresolverr:/config   # Store FlareSolverr config
     ports:
       - 8191:8191
     restart: unless-stopped
@@ -47,8 +47,8 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/jellyfin:/config
-      - ${HOME}/server/media/library:/media
+      - ./configs/jellyfin:/config
+      - ./media/library:/media
     ports:
       - 8096:8096 # web interface
       - 8920:8920 # secure interface
@@ -62,7 +62,7 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/prowlarr:/config 
+      - ./configs/prowlarr:/config 
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -76,8 +76,8 @@ services:
       - TZ=Europe/Rome
       - WEBUI_PORT=8081
     volumes:
-      - ${HOME}/server/configs/qbittorrent:/config
-      - ${HOME}/server/media/downloads:/downloads
+      - ./configs/qbittorrent:/config
+      - ./media/downloads:/downloads
     ports:
     - 8801:8080
     restart: unless-stopped
@@ -90,9 +90,9 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/radarr:/config
-      - ${HOME}/server/media/library/movies:/movies
-      - ${HOME}/server/media/downloads/movies:/downloads
+      - ./configs/radarr:/config
+      - ./media/library/movies:/movies
+      - ./media/downloads/movies:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -105,9 +105,9 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ${HOME}/server/configs/sonarr:/config
-      - ${HOME}/server/media/library/series:/tvshows
-      - ${HOME}/server/media/downloads/series:/downloads
+      - ./configs/sonarr:/config
+      - ./media/library/series:/tvshows
+      - ./media/downloads/series:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
