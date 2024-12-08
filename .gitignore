@@ -1,8 +1,0 @@
-# Ignore everything inside "configs" and "media" besides .gitkeep files
-# See https://stackoverflow.com/a/46354071
-/configs/**
-!/configs/**/
-!/configs/**/.gitkeep
-/media/**
-!/media/**/
-!/media/**/.gitkeep
