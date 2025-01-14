@@ -97,9 +97,9 @@ services:
       - 7878:7878
     restart: unless-stopped
 
-  sonarr:
+  sonarr-series:
     image: lscr.io/linuxserver/sonarr:latest
-    container_name: sonarr
+    container_name: sonarr-series
     environment:
       - PUID=1000
       - PGID=1000
@@ -109,9 +109,24 @@ services:
       - ./media/library/series:/tvshows
       - ./media/downloads/series:/downloads
     ports:
-      - 8989:8989
+      - 8988:8989
     restart: unless-stopped
   
+  sonarr-anime:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr-anime
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - ./configs/sonarr:/config
+      - ./media/library/anime:/tvshows
+      - ./media/downloads/anime:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
 networks:
   default:
     name: media-server-network
