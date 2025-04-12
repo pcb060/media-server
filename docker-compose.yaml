@@ -14,17 +14,18 @@ services:
       - 6767:6767
     restart: unless-stopped
   
-  dashy:
-    image: lissy93/dashy:latest
-    container_name: dashy
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest 
+    container_name: homarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Rome
+      - SECRET_ENCRYPTION_KEY=${SECRET_ENCRYPTION_KEY}
     volumes:
-      - ./configs/dashy:/app/user-data # Store Dashy config
+      - ./configs/homarr:/appdata
     ports:
-      - 4000:8080
+      - 4000:7575
     restart: unless-stopped
 
   flaresolverr:
@@ -128,7 +129,7 @@ services:
     restart: unless-stopped
 
   readarr:
-    image: lscr.io/linuxserver/readarr:latest
+    image: lscr.io/linuxserver/readarr:develop
     container_name: readarr
     environment:
       - PUID=1000
