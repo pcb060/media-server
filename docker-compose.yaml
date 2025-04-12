@@ -127,6 +127,21 @@ services:
       - 8989:8989
     restart: unless-stopped
 
+  readarr:
+    image: lscr.io/linuxserver/readarr:latest
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - ./configs/readarr:/config
+      - ./media/library/books:/books
+      - ./media/downloads/books:/downloads
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+
 networks:
   default:
     name: media-server-network
