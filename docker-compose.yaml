@@ -79,7 +79,7 @@ services:
       - ./configs/qbittorrent:/config
       - ./media/downloads:/downloads
     ports:
-    - 8081:8081
+      - 8081:8081
     restart: unless-stopped
 
   radarr:
