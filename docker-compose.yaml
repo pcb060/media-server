@@ -1,19 +1,4 @@
 services:
-  bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
-    container_name: bazarr
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Rome
-    volumes:
-      - ./configs/bazarr:/config
-      - ./media/library/movies:/movies
-      - ./media/library/series:/tvshows
-    ports:
-      - 6767:6767
-    restart: unless-stopped
-  
   homarr:
     image: ghcr.io/homarr-labs/homarr:latest 
     container_name: homarr
@@ -35,6 +20,21 @@ services:
       - 8191:8191
     restart: unless-stopped
 
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - ./configs/bazarr:/config
+      - ./media/library/movies:/movies
+      - ./media/library/series:/tvshows
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+  
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
