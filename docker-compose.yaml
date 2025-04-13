@@ -28,14 +28,9 @@ services:
       - 4000:7575
     restart: unless-stopped
 
-  flaresolverr:
-    image: flaresolverr/flaresolverr:latest
-    container_name: flaresolverr
-    environment:
-      - LOG_LEVEL=info
-      - TZ=Europe/Rome
-    volumes:
-      - ./configs/flaresolverr:/config   # Store FlareSolverr config
+  byparr:
+    image: ghcr.io/thephaseless/byparr
+    container_name: byparr
     ports:
       - 8191:8191
     restart: unless-stopped
