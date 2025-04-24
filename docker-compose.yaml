@@ -86,6 +86,7 @@ services:
     volumes:
       - ./configs/qbittorrent:/config
       - ./media/downloads:/downloads
+      - ./media/library:/library
     ports:
       - 8081:8081
     restart: unless-stopped
