@@ -113,7 +113,7 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ./configs/sonarr:/config
+      - ./configs/sonarr-series:/config
       - ./media/library/series:/tvshows
       - ./media/downloads/series:/downloads
     ports:
@@ -128,7 +128,7 @@ services:
       - PGID=1000
       - TZ=Europe/Rome
     volumes:
-      - ./configs/sonarr:/config
+      - ./configs/sonarr-anime:/config
       - ./media/library/anime:/tvshows
       - ./media/downloads/anime:/downloads
     ports:
