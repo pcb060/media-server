@@ -31,20 +31,6 @@ services:
       - 8191:8191
     restart: unless-stopped
 
-  bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
-    container_name: bazarr
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - ./configs/bazarr:/config
-      - ./media/library/movies:/movies
-      - ./media/library/series:/tvshows
-    ports:
-      - 6767:6767
-    restart: unless-stopped
-  
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
@@ -80,10 +66,22 @@ services:
       - WEBUI_PORT=8081
     volumes:
       - ./configs/qbittorrent:/config
-      - ./media/downloads:/downloads
-      - ./media/library:/library
+      - ./media/downloads:/media/downloads
     ports:
       - 8081:8081
+    restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./configs/bazarr:/config
+      - ./media/library:/media/library
+    ports:
+      - 6767:6767
     restart: unless-stopped
 
   radarr:
@@ -94,8 +92,7 @@ services:
       - PGID=1000
     volumes:
       - ./configs/radarr:/config
-      - ./media/library/movies:/movies
-      - ./media/downloads/movies:/downloads
+      - ./media:/media
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -108,8 +105,7 @@ services:
       - PGID=1000
     volumes:
       - ./configs/sonarr-series:/config
-      - ./media/library/series:/tvshows
-      - ./media/downloads/series:/downloads
+      - ./media:/media
     ports:
       - 8988:8989
     restart: unless-stopped
@@ -122,8 +118,7 @@ services:
       - PGID=1000
     volumes:
       - ./configs/sonarr-anime:/config
-      - ./media/library/anime:/tvshows
-      - ./media/downloads/anime:/downloads
+      - ./media:/media
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -136,8 +131,7 @@ services:
       - PGID=1000
     volumes:
       - ./configs/readarr:/config
-      - ./media/library/books:/books
-      - ./media/downloads/books:/downloads
+      - ./media:/media
     ports:
       - 8787:8787
     restart: unless-stopped
