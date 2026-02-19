@@ -1,6 +1,6 @@
 services:
   nginx-proxy-manager:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: docker.io/jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
     ports:
       - '80:80' # Public HTTP Port
@@ -71,6 +71,15 @@ services:
       - 8081:8081
     restart: unless-stopped
 
+  profilarr:
+    image: santiagosayshey/profilarr:latest
+    container_name: profilarr
+    ports:
+      - 6868:6868
+    volumes:
+      - ./configs/profilarr:/config
+    restart: unless-stopped
+
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -121,19 +130,6 @@ services:
       - ./media:/media
     ports:
       - 8989:8989
-    restart: unless-stopped
-
-  readarr:
-    image: lscr.io/linuxserver/readarr:develop
-    container_name: readarr
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - ./configs/readarr:/config
-      - ./media:/media
-    ports:
-      - 8787:8787
     restart: unless-stopped
 
   immich-server:
