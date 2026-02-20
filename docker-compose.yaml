@@ -11,21 +11,33 @@ services:
       - ./configs/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
 
-  homarr:
-    image: ghcr.io/homarr-labs/homarr:latest 
-    container_name: homarr
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
     environment:
-      - PUID=1000
-      - PGID=1000
-      - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_ENCRYPTION_KEY}
-    volumes:
-      - ./configs/homarr:/appdata
+      HOMEPAGE_ALLOWED_HOSTS: home.pcb060.dev
     ports:
-      - 4000:7575
+      - 3000:3000
+    volumes:
+      - ./configs/homepage:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+
+  glances:
+    image: nicolargo/glances:latest
+    container_name: glances
+    environment:
+      - GLANCES_OPT=-w
+    pid: host
+    ports:
+      - "61208:61208"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/host:ro
     restart: unless-stopped
 
   byparr:
-    image: ghcr.io/thephaseless/byparr
+    image: ghcr.io/thephaseless/byparr:latest
     container_name: byparr
     ports:
       - 8191:8191
