@@ -19,14 +19,14 @@
     const catNoises = ['mao', 'maooo', 'meo!', 'mreo', 'miao', 'miaooo', 'mau', 'mauuu', 'miau', 'miauu', 'miaa', 'prr', 'mrauu'];
     const bubbleFontSize = '0.8rem';
     const bubblePadding = '0.4rem 0.7rem';
-    const bubbleOffset = 4;       // px from logo
+    const bubbleOffset = 4; // px from logo
     const scaleMin = 0.8;
     const scalePop = 1.1;
     const bubbleVisibleDuration = 2000; // ms bubble is visible
 
     // Loop duration range (ms)
-    const bubbleLoopDurationMin = 10000;  // minimum interval between pops
-    const bubbleLoopDurationMax = 45000; // maximum interval between pops
+    const bubbleLoopDurationMin = 10000; // minimum interval between pops
+    const bubbleLoopDurationMax = 50000; // maximum interval between pops
 
     // =======================
     // CREATE BUBBLE
@@ -48,7 +48,7 @@
         .information-widget-logo .speech {
             position: absolute;
             top: 50%;
-            right: calc(100% + ${bubbleOffset}px);
+            left: calc(100% + ${bubbleOffset}px); /* bubble to the right of logo */
             padding: ${bubblePadding};
             background: #fff;
             color: #000;
@@ -65,11 +65,11 @@
             content: "";
             position: absolute;
             top: 50%;
-            right: -6px;
+            left: -6px; /* tail sticks out to the left */
             transform: translateY(-50%);
-            border-width: 6px 0 6px 6px;
+            border-width: 6px 6px 6px 0;
             border-style: solid;
-            border-color: transparent transparent transparent #fff;
+            border-color: transparent #fff transparent transparent;
         }
     `;
     document.head.appendChild(style);
@@ -78,14 +78,10 @@
     // SHOW/HIDE FUNCTION
     // =======================
     function popBubble() {
-        // random text
         bubble.textContent = catNoises[Math.floor(Math.random() * catNoises.length)];
-
-        // show
         bubble.style.opacity = 1;
         bubble.style.transform = `translateY(-50%) scale(${scalePop})`;
 
-        // hide after bubbleVisibleDuration
         setTimeout(() => {
             bubble.style.opacity = 0;
             bubble.style.transform = `translateY(-50%) scale(${scaleMin})`;
@@ -93,7 +89,7 @@
     }
 
     // =======================
-    // HELPER TO PICK RANDOM DURATION IN RANGE
+    // RANDOM DURATION HELPER
     // =======================
     function randomDuration() {
         return bubbleLoopDurationMin + Math.random() * (bubbleLoopDurationMax - bubbleLoopDurationMin);
@@ -106,11 +102,10 @@
         const nextDuration = randomDuration();
         setTimeout(() => {
             popBubble();
-            scheduleNextPop(); // schedule the next one
+            scheduleNextPop();
         }, nextDuration);
     }
 
     // Start first pop after a random delay within range
     setTimeout(scheduleNextPop, randomDuration());
 })();
-
