@@ -19,7 +19,8 @@
     const catNoises = ['mao', 'maooo', 'meo!', 'mreo', 'miao', 'miaooo', 'mau', 'mauuu', 'miau', 'miauu', 'miaa', 'prr', 'mrauu'];
     const bubbleFontSize = '0.8rem';
     const bubblePadding = '0.4rem 0.7rem';
-    const bubbleOffset = 4; // px from logo
+    const bubbleOffset = 0; // px from logo
+    const verticalOffset = 15 // pixels to lower bubble towards mouth
     const scaleMin = 0.8;
     const scalePop = 1.1;
     const bubbleVisibleDuration = 2000; // ms bubble is visible
@@ -47,7 +48,7 @@
 
         .information-widget-logo .speech {
             position: absolute;
-            top: 50%;
+            top: calc(50% + ${verticalOffset}px); /* lowered towards mouth */
             left: calc(100% + ${bubbleOffset}px); /* bubble to the right of logo */
             padding: ${bubblePadding};
             background: #fff;
