@@ -16,6 +16,8 @@ services:
     container_name: homepage
     environment:
       HOMEPAGE_ALLOWED_HOSTS: home.pcb060.dev
+    env_file:
+      - .env
     ports:
       - 3000:3000
     volumes:
@@ -29,12 +31,22 @@ services:
     container_name: glances
     environment:
       - GLANCES_OPT=-w
-    pid: host
     ports:
       - "61208:61208"
     volumes:
+      - ./configs/glances/glances.conf:/glances/conf/glances.conf
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /:/host:ro
+      - /etc/os-release:/etc/os-release:ro
+    pid: host
+    read_only: true
+    privileged: false
+    cap_add:
+     - SYS_RAWIO
+    devices:
+      - /dev/sdb1
+    tmpfs:
+      - /tmp
     restart: unless-stopped
 
   byparr:
@@ -146,8 +158,8 @@ services:
     restart: unless-stopped
 
   immich-server:
-    container_name: immich-server
     image: ghcr.io/immich-app/immich-server:release
+    container_name: immich-server
     volumes:
       - ${IMMICH_UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
