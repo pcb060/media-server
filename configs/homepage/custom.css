@@ -12,6 +12,8 @@
 
 .information-widget-logo img {
   border-radius: 35%;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 .information-widget-openmeteo {
@@ -19,4 +21,13 @@
 
 .information-widget-search {
   margin: 0 12px;
+}
+
+/* Mobile */
+#widgets-wrap {
+  flex-wrap: nowrap !important;
+}
+
+#widgets-wrap #information-widgets-right {
+  flex-wrap: nowrap !important;
 }
