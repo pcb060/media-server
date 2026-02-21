@@ -1,0 +1,22 @@
+#information-widgets {
+  padding: 6px 12px;
+}
+
+.information-widget-logo {
+  margin: 0 6px;
+}
+
+.information-widget-logo > div {
+  margin: 0;
+}
+
+.information-widget-logo img {
+  border-radius: 35%;
+}
+
+.information-widget-openmeteo {
+}
+
+.information-widget-search {
+  margin: 0 12px;
+}

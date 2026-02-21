@@ -1,11 +1,16 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/info-widgets/
+- logo:
+    icon: /images/gigiochad.png 
 
-- resources:
-    cpu: true
-    memory: true
-    disk: /
+- openmeteo:
+    label: Milano
+    latitude: 45.4643
+    longitude: 9.1895
+    timezone: Europe/Rome
+    units: metric
+    cache: 10
+    format:
+      maximumFractionDigits: 1
 
 - search:
     provider: duckduckgo

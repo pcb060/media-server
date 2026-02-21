@@ -1,13 +1,39 @@
+---
+title: pirateship
 favicon: /images/gigiochad.png
+headerStyle: boxed
+disableIndexing: true
 
 layout:
-  Manage:
-    tab: Manage
+  Enjoy:
+    tab: General
     header: false
     style: row
+    columns: 1
+  Find:
+    tab: General
+    style: row
+    columns: 1
+
+  Admin:
+    tab: Admin
+    style: row
     columns: 3
-  Status:
-    tab: Server Status
+    useEqualHeights: true
+
+  Monitor:
+    tab: Monitor
     header: false
     style: row
     columns: 2 
+  Glances:
+    header: false
+    tab: Monitor
+    style: row
+    columns: 1
+  Tailscale: 
+    icon: tailscale
+    tab: Monitor
+    style: row
+    columns: 2 
+

@@ -1,11 +1,107 @@
-- Status:
+---
+- Enjoy:
+  - Jellyfin:
+      href: https://watch.home.pcb060.dev
+      description: Watch movies, TV shows, and listen to music from your personal media library.
+      icon: jellyfin
+      widget:
+        type: jellyfin
+        url: https://watch.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
+        version: 2
+        enableBlocks: true
+        enableNowPlaying: true
+        enableUser: true
+        enableMediaControl: false
+        showEpisodeNumber: true
+        expandOneStreamToTwoRows: true
+  - Immich:
+      href: https://photos.home.pcb060.dev
+      description: Back up, browse, and manage your personal photos and videos.
+      icon: immich
+      widget:
+        type: immich
+        url: https://photos.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_IMMICH_API_KEY}}
+        version: 2
+- Find:
+  - Movies:
+      href: https://movies.home.pcb060.dev
+      description: Discover, download, and organize movies automatically.
+      icon: radarr
+      widget:
+        type: radarr
+        url: https://movies.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+        enableQueue: false
+  - Series:
+      href: https://series.home.pcb060.dev
+      description: Track, download, and organize TV series episodes.
+      icon: sonarr
+      widget:
+        type: sonarr
+        url: https://series.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_SONARR_SERIES_API_KEY}}
+        enableQueue: false
+  - Anime:
+      href: https://anime.home.pcb060.dev
+      description: Track and download anime releases.
+      icon: sonarr
+      widget:
+        type: sonarr
+        url: https://anime.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_SONARR_ANIME_API_KEY}}
+        enableQueue: false
+
+
+- Admin:
+  - Nginx Proxy Manager:
+      href: https://npm.home.pcb060.dev
+      description: Manage domain routing and HTTPS certificates for all self-hosted services.
+      icon: nginx-proxy-manager
+      widget:
+        type: npm
+        url: https://npm.home.pcb060.dev
+        username: {{HOMEPAGE_VAR_NPM_USR}}
+        password: {{HOMEPAGE_VAR_NPM_PWD}}
+  - Prowlarr:
+      href: https://indexer.home.pcb060.dev
+      description: Manage and sync torrent/Usenet indexers used by your media automation tools.
+      icon: prowlarr
+      widget:
+        type: prowlarr
+        url: https://indexer.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+  - qBittorrent:
+      href: https://{{HOMEPAGE_VAR_QBITTORRENT_USR}}:{{HOMEPAGE_VAR_QBITTORRENT_PWD}}@downloads.home.pcb060.dev
+      description: Download and manage torrents through a web interface.
+      icon: qbittorrent
+      widget:
+        type: qbittorrent
+        url: https://downloads.home.pcb060.dev 
+        username: {{HOMEPAGE_VAR_QBITTORRENT_USR}}
+        password: {{HOMEPAGE_VAR_QBITTORRENT_PWD}}
+  - Bazarr:
+      href: https://subtitles.home.pcb060.dev
+      description: Automatically download and manage subtitles for your movies and series.
+      icon: bazarr
+      widget:
+        type: bazarr
+        url: https://subtitles.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_BAZARR_API_KEY}}
+  - Profilarr:
+      href: https://profilarr.home.pcb060.dev
+      description: Configure and maintain consistent quality and release profiles across your media services.
+      icon: profilarr
+
+
+- Monitor:
   - System:
       widget:
         type: glances
         url: https://status.home.pcb060.dev
         metric: info
         version: 4
-
   - Top Processes:
       widget:
         type: glances
@@ -13,14 +109,12 @@
         metric: process
         refreshInterval: 5000
         version: 4
-  
   - Network Usage:
       widget:
         type: glances
         url: https://status.home.pcb060.dev
         metric: network:eth0
         version: 4
-  
   - Containers:
       widget:
         type: glances
@@ -28,7 +122,6 @@
         metric: containers
         refreshInterval: 5000
         version: 4
-  
   - Filesystem:
       widget:
         type: glances
@@ -36,7 +129,6 @@
         metric: fs:/host{{HOMEPAGE_VAR_HDD_MNT_POINT}}
         refreshInterval: 60000
         version: 4
-  
   - Disk I/O:
       widget:
         type: glances
@@ -44,26 +136,14 @@
         metric: disk:sdb1
         version: 4
 
-- Manage:
-  - Nginx Proxy Manager:
-      href: https://npm.home.pcb060.dev
+- Tailscale:
+  - Media Server:
       widget:
-        type: npm
-        url: https://npm.home.pcb060.dev
-        username: {{HOMEPAGE_VAR_NPM_USR}}
-        password: {{HOMEPAGE_VAR_NPM_PWD}}
-
-  - Prowlarr:
-      href: https://indexer.home.pcb060.dev
+        type: tailscale
+        deviceid: nj1upDNWAs11CNTRL 
+        key: {{HOMEPAGE_VAR_TAILSCALE_API_KEY}}
+  - Home PC:
       widget:
-        type: prowlarr
-        url: https://indexer.home.pcb060.dev
-        key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
-
-  - qBittorrent:
-      href: https://{{HOMEPAGE_VAR_QBITTORRENT_USR}}:{{HOMEPAGE_VAR_QBITTORRENT_PWD}}@downloads.home.pcb060.dev
-      widget:
-        type: qbittorrent
-        url: https://downloads.home.pcb060.dev 
-        username: {{HOMEPAGE_VAR_QBITTORRENT_USR}}
-        password: {{HOMEPAGE_VAR_QBITTORRENT_PWD}}
+        type: tailscale
+        deviceid: ngDYdUkAvm11CNTRL 
+        key: {{HOMEPAGE_VAR_TAILSCALE_API_KEY}}
