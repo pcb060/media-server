@@ -1,18 +1,66 @@
----
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/services/
+- Status:
+  - System:
+      widget:
+        type: glances
+        url: https://status.home.pcb060.dev
+        metric: info
+        version: 4
 
-- My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+  - Top Processes:
+      widget:
+        type: glances
+        url: https://status.home.pcb060.dev
+        metric: process
+        version: 4
+  
+  - Network Usage:
+      widget:
+        type: glances
+        url: https://status.home.pcb060.dev
+        metric: network:eth0
+        version: 4
+  
+  - Top Processes:
+      widget:
+        type: glances
+        url: https://status.home.pcb060.dev
+        metric: process
+        version: 4
+  
+  - Filesystem:
+      widget:
+        type: glances
+        url: https://status.home.pcb060.dev
+        metric: fs:/host{{HOMEPAGE_VAR_HDD_MNT_POINT}}
+        version: 4
+  
+  - Disk I/O:
+      widget:
+        type: glances
+        url: https://status.home.pcb060.dev
+        metric: disk:sdb1
+        version: 4
 
-- My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+- Manage:
+  - Nginx Proxy Manager:
+      href: https://npm.home.pcb060.dev
+      widget:
+        type: npm
+        url: https://npm.home.pcb060.dev
+        username: {{HOMEPAGE_VAR_NPM_USR}}
+        password: {{HOMEPAGE_VAR_NPM_PWD}}
 
-- My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
+  - Prowlarr:
+      href: https://indexer.home.pcb060.dev
+      widget:
+        type: prowlarr
+        url: https://indexer.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+
+  - qBittorrent:
+      href: https://{{HOMEPAGE_VAR_QBITTORRENT_USR}}:{{HOMEPAGE_VAR_QBITTORRENT_PWD}}@downloads.home.pcb060.dev
+      widget:
+        type: qbittorrent
+        url: https://downloads.home.pcb060.dev 
+        username: {{HOMEPAGE_VAR_QBITTORRENT_USR}}
+        password: {{HOMEPAGE_VAR_QBITTORRENT_PWD}}

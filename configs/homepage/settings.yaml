@@ -1,1 +1,11 @@
 favicon: /images/gigiochad.png
+
+layout:
+  Manage:
+    tab: Manage
+    style: row
+    columns: 3
+  Status:
+    tab: Status
+    style: row
+    columns: 2 
