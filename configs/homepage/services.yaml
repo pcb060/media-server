@@ -11,6 +11,7 @@
         type: glances
         url: https://status.home.pcb060.dev
         metric: process
+        refreshInterval: 5000
         version: 4
   
   - Network Usage:
@@ -20,11 +21,12 @@
         metric: network:eth0
         version: 4
   
-  - Top Processes:
+  - Containers:
       widget:
         type: glances
         url: https://status.home.pcb060.dev
-        metric: process
+        metric: containers
+        refreshInterval: 5000
         version: 4
   
   - Filesystem:
@@ -32,6 +34,7 @@
         type: glances
         url: https://status.home.pcb060.dev
         metric: fs:/host{{HOMEPAGE_VAR_HDD_MNT_POINT}}
+        refreshInterval: 60000
         version: 4
   
   - Disk I/O:

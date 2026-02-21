@@ -3,9 +3,11 @@ favicon: /images/gigiochad.png
 layout:
   Manage:
     tab: Manage
+    header: false
     style: row
     columns: 3
   Status:
-    tab: Status
+    tab: Server Status
+    header: false
     style: row
     columns: 2 
