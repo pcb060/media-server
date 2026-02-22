@@ -2,7 +2,7 @@
 - Enjoy:
   - Jellyfin:
       href: https://watch.home.pcb060.dev
-      description: Watch movies, TV shows, and listen to music from your personal media library.
+      description: Watch movies, TV shows and anime from your personal media library.
       icon: jellyfin
       widget:
         type: jellyfin
@@ -24,6 +24,11 @@
         url: https://photos.home.pcb060.dev
         key: {{HOMEPAGE_VAR_IMMICH_API_KEY}}
         version: 2
+  - Calibre:
+      href: https://read.home.pcb060.dev
+      description: Browse and manage your ebooks library.
+      icon: calibre
+
 - Find:
   - Movies:
       href: https://movies.home.pcb060.dev
@@ -52,6 +57,10 @@
         url: https://anime.home.pcb060.dev
         key: {{HOMEPAGE_VAR_SONARR_ANIME_API_KEY}}
         enableQueue: false
+  - Books:
+      href: https://books.home.pcb060.dev
+      description: Find and download ebooks and audiobooks.
+      icon: shelfmark
 
 
 - Admin:
@@ -73,7 +82,7 @@
         url: https://indexer.home.pcb060.dev
         key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
   - qBittorrent:
-      href: https://{{HOMEPAGE_VAR_QBITTORRENT_USR}}:{{HOMEPAGE_VAR_QBITTORRENT_PWD}}@downloads.home.pcb060.dev
+      href: https://downloads.home.pcb060.dev
       description: Download and manage torrents through a web interface.
       icon: qbittorrent
       widget:

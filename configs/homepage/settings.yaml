@@ -3,6 +3,7 @@ title: pirateship
 favicon: /images/gigiochad.png
 headerStyle: boxed
 disableIndexing: true
+useEqualHeights: true
 
 layout:
   Enjoy:
@@ -13,13 +14,12 @@ layout:
   Find:
     tab: General
     style: row
-    columns: 1
+    columns: 2
 
   Admin:
     tab: Admin
     style: row
     columns: 3
-    useEqualHeights: true
 
   Monitor:
     tab: Monitor
