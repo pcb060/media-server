@@ -2,8 +2,13 @@
 title: pirateship
 favicon: /images/gigiochad.png
 headerStyle: boxed
-disableIndexing: true
 useEqualHeights: true
+target: _blank
+quickLaunch:
+  searchDescriptions: true
+  mobileButtonPosition: bottom-right
+disableIndexing: true # disables search engine indexing
+
 
 layout:
   Enjoy:
@@ -36,4 +41,8 @@ layout:
     tab: Monitor
     style: row
     columns: 2 
+
+  Links:
+    style: row
+    columns: 2
 

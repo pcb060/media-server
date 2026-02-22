@@ -4,3 +4,13 @@
     - abbr: GL
       href: https://status.home.pcb060.dev
       icon: glances
+
+- Links:
+    - Github:
+        - href: https://github.com/pcb060/media-server.git
+          description: This media server code repository
+          icon: github
+    - Docs:
+        - href: https://gethomepage.dev/configs/
+          description: Documentation for homepage 
+          icon: homepage
