@@ -156,6 +156,31 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
+  
+  calibre-web-automated:
+    image: crocodilestick/calibre-web-automated:latest
+    container_name: calibre-web-automated
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - HARDCOVER_TOKEN=${HARDCOVER_API_TOKEN}
+    volumes:
+      - ./configs/calibre-web-automated:/config
+      - ./media/downloads/books:/cwa-book-ingest
+      - ./media/library/books:/calibre-library
+    ports:
+      - 8083:8083
+    restart: unless-stopped
+
+  shelfmark:
+    image: ghcr.io/calibrain/shelfmark:latest
+    container_name: shelfmark
+    volumes:
+      - ./configs/shelfmark:/config
+      - ./media/downloads/books:/books
+    ports:
+      - 8084:8084
+    restart: unless-stopped
 
   immich-server:
     image: ghcr.io/immich-app/immich-server:release
@@ -164,7 +189,7 @@ services:
       - ${IMMICH_UPLOAD_LOCATION}:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - '2283:2283'
+      - 2283:2283
     depends_on:
       - redis
       - database
