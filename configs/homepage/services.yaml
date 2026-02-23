@@ -14,7 +14,8 @@
         enableUser: true
         enableMediaControl: false
         showEpisodeNumber: true
-        expandOneStreamToTwoRows: true
+        expandOneStreamToTwoRows: false
+        fields: ["movies", "series", "episodes"]
   - Immich:
       href: https://photos.home.pcb060.dev
       description: Back up, browse, and manage your personal photos and videos.
@@ -28,6 +29,11 @@
       href: https://read.home.pcb060.dev
       description: Browse and manage your ebooks library.
       icon: calibre
+      widget:
+        type: calibreweb
+        url: https://read.home.pcb060.dev
+        username: {{HOMEPAGE_VAR_CWA_USR}}
+        password: {{HOMEPAGE_VAR_CWA_PWD}}
 
 - Find:
   - Movies:
