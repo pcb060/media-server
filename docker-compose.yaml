@@ -183,6 +183,19 @@ services:
       - 8084:8084
     restart: unless-stopped
 
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+    volumes:
+      - ./configs/cleanuparr:/config
+    ports:
+      - 11011:11011
+    restart: unless-stopped
+
   immich-server:
     image: ghcr.io/immich-app/immich-server:release
     container_name: immich-server

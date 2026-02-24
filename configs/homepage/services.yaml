@@ -108,6 +108,10 @@
       href: https://profilarr.home.pcb060.dev
       description: Configure and maintain consistent quality and release profiles across your media services.
       icon: profilarr
+  - Cleanuparr:
+      href: https://cleanup.home.pcb060.dev
+      description: Automate the cleanup of unwanted or blocked files in Sonarr, Radarr and download clients like qBittorrent.
+      icon: cleanuparr
 
 
 - Monitor:
