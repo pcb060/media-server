@@ -6,10 +6,10 @@
       icon: glances
 
 - Links:
-    - Github:
-        - href: https://github.com/pcb060/media-server.git
+    - Codeberg:
+        - href: https://codeberg.org/pcb060/media-server.git
           description: This media server code repository
-          icon: github
+          icon: codeberg
     - Docs:
         - href: https://gethomepage.dev/configs/
           description: Documentation for homepage 

@@ -13,5 +13,6 @@
       maximumFractionDigits: 1
 
 - search:
-    provider: duckduckgo
+    provider: custom
+    url: https://kagi.com/search?q=
     target: _blank

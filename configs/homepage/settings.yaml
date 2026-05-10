@@ -5,6 +5,9 @@ headerStyle: boxed
 useEqualHeights: true
 target: _blank
 quickLaunch:
+  provider: custom
+  url: https://kagi.com/search?q=
+  target: _blank
   searchDescriptions: true
   mobileButtonPosition: bottom-right
 disableIndexing: true # disables search engine indexing
