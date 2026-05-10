@@ -19,5 +19,6 @@
   "SEARCH_MODE": "universal",
   "METADATA_PROVIDER": "hardcover",
   "onboarding_complete": true,
-  "CALIBRE_WEB_URL": "https://read.home.pcb060.dev"
+  "CALIBRE_WEB_URL": "https://read.home.pcb060.dev",
+  "SEARCH_PAGE_TITLE": "Book Search & Download"
 }
