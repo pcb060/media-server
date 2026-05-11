@@ -2,20 +2,15 @@
 default:
     @just --list
 
-# Run docker-compose command for each compose file
-compose-all cmd:
-    #!/usr/bin/env bash
-    for f in compose/*.yaml; do
-        docker-compose -p media-server -f $f {{ cmd }}
-    done
-
 # Stop all services
 stop:
-    just compose-all "down --remove-orphans"
+    #!/usr/bin/env bash
+    docker-compose -p media-server $(printf -- '-f %s ' compose/*.yaml) down --remove-orphans
 
 # Start all services
 start:
-    just compose-all "up -d"
+    #!/usr/bin/env bash
+    docker-compose -p media-server $(printf -- '-f %s ' compose/*.yaml) up -d
 
 # Restart all services
 restart: stop start
@@ -25,9 +20,9 @@ update:
     #!/usr/bin/env bash
     set -e
     for f in compose/*.yaml; do
-        docker-compose -p media-server -f $f pull
+        docker-compose -p media-server -f "$f" pull
     done
-    just compose-all "up -d"
+    just start
     docker image prune -f
 
 # Tail logs for a service
@@ -37,11 +32,7 @@ logs service:
 # Show status of all services
 status:
     #!/usr/bin/env bash
-    for f in compose/*.yaml; do
-        echo "=== $(basename $f) ==="
-        docker-compose -p media-server -f $f ps
-        echo ""
-    done
+    docker-compose -p media-server $(printf -- '-f %s ' compose/*.yaml) ps
 
 # Clean up dangling images
 clean:
