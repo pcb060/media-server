@@ -1,0 +1,14 @@
+services:
+  shelfmark:
+    image: ghcr.io/calibrain/shelfmark:latest
+    container_name: shelfmark
+    volumes:
+      - ../configs/shelfmark:/config
+      - ../media/downloads/books:/books
+    ports:
+      - 8084:8084
+    restart: unless-stopped
+
+networks:
+  media-server-network:
+    external: true

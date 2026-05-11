@@ -1,0 +1,19 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - TZ=Europe/Rome
+      - PUID=1000
+      - PGID=1000
+      - WEBUI_PORT=8081
+    volumes:
+      - ../configs/qbittorrent:/config
+      - ../media/downloads:/media/downloads
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+
+networks:
+  media-server-network:
+    external: true

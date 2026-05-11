@@ -1,0 +1,28 @@
+services:
+  glances:
+    image: nicolargo/glances:latest
+    container_name: glances
+    environment:
+      - TZ=Europe/Rome
+      - GLANCES_OPT=-w
+    ports:
+      - "61208:61208"
+    volumes:
+      - ../configs/glances/glances.conf:/glances/conf/glances.conf
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/host:ro
+      - /etc/os-release:/etc/os-release:ro
+    pid: host
+    read_only: true
+    privileged: false
+    cap_add:
+     - SYS_RAWIO
+    devices:
+      - /dev/sdb1
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+
+networks:
+  media-server-network:
+    external: true

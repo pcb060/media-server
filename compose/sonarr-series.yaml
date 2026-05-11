@@ -1,0 +1,18 @@
+services:
+  sonarr-series:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr-series
+    environment:
+      - TZ=Europe/Rome
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ../configs/sonarr-series:/config
+      - ../media:/media
+    ports:
+      - 8988:8989
+    restart: unless-stopped
+
+networks:
+  media-server-network:
+    external: true
