@@ -1,11 +1,13 @@
 services:
   immich-server:
-    image: ghcr.io/immich-app/immich-server:release
+    image: ghcr.io/immich-app/immich-server:v3.1.0
     container_name: immich-server
+    env_file:
+      - immich.env
     environment:
       - TZ=Europe/Rome
     volumes:
-      - ../media/library/photos:/usr/src/app/upload
+      - ../media/library/photos:/data
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 2283:2283
@@ -18,7 +20,9 @@ services:
 
   immich-machine-learning:
     container_name: immich-machine-learning
-    image: ghcr.io/immich-app/immich-machine-learning:release
+    image: ghcr.io/immich-app/immich-machine-learning:v3.1.0
+    env_file:
+      - immich.env
     volumes:
       - immich-model-cache:/cache
     restart: always
@@ -26,30 +30,25 @@ services:
       disable: false
 
   redis:
-    container_name: immich-redis
-    image: docker.io/valkey/valkey:8-bookworm@sha256:42cba146593a5ea9a622002c1b7cba5da7be248650cbb64ecb9c6c33d29794b1
+    container_name: immich_redis
+    image: docker.io/valkey/valkey:9@sha256:8e8d64b405ce18f41b8e5ee20aa4687a8ed0022d1298f2ce31cdcf3a76e09411
     healthcheck:
       test: redis-cli ping || exit 1
     restart: always
 
   database:
     container_name: immich-postgres
-    image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:739cdd626151ff1f796dc95a6591b55a714f341c737e27f045019ceabf8e8c52
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
     env_file:
       - immich.env
     environment:
       - POSTGRES_INITDB_ARGS=--data-checksums
     volumes:
       - ../configs/immich/pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: >-
-        pg_isready --dbname="$$POSTGRES_DB" --username="$$POSTGRES_USER" || exit 1; Chksum="$$(psql --dbname="$$POSTGRES_DB" --username="$$POSTGRES_USER" --tuples-only --no-align --command='SELECT COALESCE(SUM(checksum_failures), 0) FROM pg_stat_database')"; echo "checksum failure count is $$Chksum"; [ "$$Chksum" = '0' ] || exit 1
-      interval: 5m
-      start_interval: 30s
-      start_period: 5m
-    command: >-
-      postgres -c shared_preload_libraries=vectors.so -c 'search_path="$$user", public, vectors' -c logging_collector=on -c max_wal_size=2GB -c shared_buffers=512MB -c wal_compression=on
+    shm_size: 128mb
     restart: always
+    healthcheck:
+      disable: false
 
 volumes:
   immich-model-cache:
