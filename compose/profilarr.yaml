@@ -1,11 +1,16 @@
 services:
   profilarr:
-    image: santiagosayshey/profilarr:latest
+    image: ghcr.io/dictionarry-hub/profilarr:latest
     container_name: profilarr
     ports:
       - 6868:6868
     volumes:
       - ../configs/profilarr:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
+      - ORIGIN=https://profilarr.home.pcb060.dev/
     restart: unless-stopped
 
 networks:
