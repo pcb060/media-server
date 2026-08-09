@@ -6,6 +6,17 @@
         return;
     }
 
+    const logoOptions = ['/images/gigiochad.png', '/images/bicecletta.png'];
+    const selectedLogo = logoOptions[Math.floor(Math.random() * logoOptions.length)];
+
+    function applySelectedLogo() {
+        logoImg.src = selectedLogo;
+        logoImg.srcset = selectedLogo;
+    }
+
+    applySelectedLogo();
+    setTimeout(applySelectedLogo, 200);
+
     const container = logoImg.closest('.information-widget-logo');
     if (!container) return;
 
@@ -78,12 +89,16 @@
     // =======================
     // SHOW/HIDE FUNCTION
     // =======================
+    let bubbleHideTimeout;
+    let bubbleLoopTimeout;
+
     function popBubble() {
         bubble.textContent = catNoises[Math.floor(Math.random() * catNoises.length)];
         bubble.style.opacity = 1;
         bubble.style.transform = `translateY(-50%) scale(${scalePop})`;
 
-        setTimeout(() => {
+        clearTimeout(bubbleHideTimeout);
+        bubbleHideTimeout = setTimeout(() => {
             bubble.style.opacity = 0;
             bubble.style.transform = `translateY(-50%) scale(${scaleMin})`;
         }, bubbleVisibleDuration);
@@ -101,12 +116,18 @@
     // =======================
     function scheduleNextPop() {
         const nextDuration = randomDuration();
-        setTimeout(() => {
+        clearTimeout(bubbleLoopTimeout);
+        bubbleLoopTimeout = setTimeout(() => {
             popBubble();
             scheduleNextPop();
         }, nextDuration);
     }
 
+    logoImg.addEventListener('click', () => {
+        popBubble();
+        scheduleNextPop();
+    });
+
     // Start first pop after a random delay within range
-    setTimeout(scheduleNextPop, randomDuration());
+    scheduleNextPop();
 })();
