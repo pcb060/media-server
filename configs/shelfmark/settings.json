@@ -10,7 +10,17 @@
   ],
   "SUPPORTED_AUDIOBOOK_FORMATS": [
     "m4b",
-    "mp3"
+    "mp3",
+    "m4a",
+    "mp4",
+    "flac",
+    "ogg",
+    "wma",
+    "aac",
+    "wav",
+    "opus",
+    "zip",
+    "rar"
   ],
   "BOOK_LANGUAGE": [
     "en",

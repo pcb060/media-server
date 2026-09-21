@@ -68,6 +68,11 @@
       description: Find and download ebooks and audiobooks.
       icon: shelfmark
 
+- Utils:
+  - BentoPDF:
+      href: https://pdf.home.pcb060.dev
+      description: A powerful, privacy-first, client-side PDF toolkit
+      icon: bentopdf
 
 - Admin:
   - Nginx Proxy Manager:
@@ -93,7 +98,7 @@
       icon: qbittorrent
       widget:
         type: qbittorrent
-        url: https://downloads.home.pcb060.dev 
+        url: https://downloads.home.pcb060.dev
         username: {{HOMEPAGE_VAR_QBITTORRENT_USR}}
         password: {{HOMEPAGE_VAR_QBITTORRENT_PWD}}
   - Bazarr:
@@ -159,10 +164,10 @@
   - Media Server:
       widget:
         type: tailscale
-        deviceid: nj1upDNWAs11CNTRL 
+        deviceid: nj1upDNWAs11CNTRL
         key: {{HOMEPAGE_VAR_TAILSCALE_API_KEY}}
   - Home PC:
       widget:
         type: tailscale
-        deviceid: ngDYdUkAvm11CNTRL 
+        deviceid: ngDYdUkAvm11CNTRL
         key: {{HOMEPAGE_VAR_TAILSCALE_API_KEY}}
