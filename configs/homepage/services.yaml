@@ -51,6 +51,10 @@
       icon: shelfmark
 
 - Utils:
+  - GigioPT (Open WebUI):
+      href: https://chat.home.pcb060.dev
+      description: Chat interface for AI models (ChatGPT-style).
+      icon: open-webui
   - BentoPDF:
       href: https://pdf.home.pcb060.dev
       description: A powerful, privacy-first, client-side PDF toolkit

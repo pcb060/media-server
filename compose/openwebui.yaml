@@ -1,0 +1,28 @@
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openwebui
+    environment:
+      - TZ=Europe/Rome
+      - WEBUI_AUTH=true
+      - ENABLE_SIGNUP=false
+      - DEFAULT_ROLES=user
+      - DEFAULT_USER_ROLE=user
+      - WEBUI_NAME=GigioPT
+    env_file:
+      - ./envs/openwebui.env
+    volumes:
+      - ../configs/openwebui:/app/backend/data
+    ports:
+      - 13010:8080
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
+      start_period: 30s
+      timeout: 5s
+      interval: 30s
+      retries: 3
+    restart: unless-stopped
+
+networks:
+  media-server-network:
+    external: true
