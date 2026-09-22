@@ -15,14 +15,14 @@ disableIndexing: true # disables search engine indexing
 
 layout:
   Enjoy:
-    tab: Media
+    tab: Library
     header: false
     style: row
     columns: 1
   Find:
-    tab: Media
+    tab: Library
     style: row
-    columns: 2
+    columns: 1
 
   Utils:
     tab: Utils
@@ -30,24 +30,28 @@ layout:
     style: row
     columns: 1
 
-  Admin:
-    tab: Admin
+  Media Tools:
+    tab: Media Tools
     style: row
-    columns: 3
+    columns: 2
 
-  Monitor:
-    tab: Monitor
+  Nginx Proxy Manager:
+    tab: Admin
     header: false
+    style: row
+    columns: 1
+  Monitor:
+    tab: Admin
     style: row
     columns: 2
   Glances:
     header: false
-    tab: Monitor
+    tab: Admin
     style: row
     columns: 1
   Tailscale:
     icon: tailscale
-    tab: Monitor
+    tab: Admin
     style: row
     columns: 2
 

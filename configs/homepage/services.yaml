@@ -36,33 +36,15 @@
         password: {{HOMEPAGE_VAR_CWA_PWD}}
 
 - Find:
-  - Movies:
-      href: https://movies.home.pcb060.dev
-      description: Discover, download, and organize movies automatically.
-      icon: radarr
+  - Seerr:
+      href: https://want.home.pcb060.dev
+      description: Request movies, series, and anime for your media library.
+      icon: seerr
       widget:
-        type: radarr
-        url: https://movies.home.pcb060.dev
-        key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
-        enableQueue: false
-  - Series:
-      href: https://series.home.pcb060.dev
-      description: Track, download, and organize TV series episodes.
-      icon: sonarr
-      widget:
-        type: sonarr
-        url: https://series.home.pcb060.dev
-        key: {{HOMEPAGE_VAR_SONARR_SERIES_API_KEY}}
-        enableQueue: false
-  - Anime:
-      href: https://anime.home.pcb060.dev
-      description: Track and download anime releases.
-      icon: sonarr
-      widget:
-        type: sonarr
-        url: https://anime.home.pcb060.dev
-        key: {{HOMEPAGE_VAR_SONARR_ANIME_API_KEY}}
-        enableQueue: false
+        type: seerr
+        url: https://want.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_SEERR_API_KEY}}
+        enableRequests: true
   - Books:
       href: https://books.home.pcb060.dev
       description: Find and download ebooks and audiobooks.
@@ -74,16 +56,34 @@
       description: A powerful, privacy-first, client-side PDF toolkit
       icon: bentopdf
 
-- Admin:
-  - Nginx Proxy Manager:
-      href: https://npm.home.pcb060.dev
-      description: Manage domain routing and HTTPS certificates for all self-hosted services.
-      icon: nginx-proxy-manager
+- Media Tools:
+  - Radarr:
+      href: https://movies.home.pcb060.dev
+      description: Discover, download, and organize movies automatically.
+      icon: radarr
       widget:
-        type: npm
-        url: https://npm.home.pcb060.dev
-        username: {{HOMEPAGE_VAR_NPM_USR}}
-        password: {{HOMEPAGE_VAR_NPM_PWD}}
+        type: radarr
+        url: https://movies.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+        enableQueue: false
+  - Sonarr (Series):
+      href: https://series.home.pcb060.dev
+      description: Track, download, and organize TV series episodes.
+      icon: sonarr
+      widget:
+        type: sonarr
+        url: https://series.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_SONARR_SERIES_API_KEY}}
+        enableQueue: false
+  - Sonarr (Anime):
+      href: https://anime.home.pcb060.dev
+      description: Track and download anime releases.
+      icon: sonarr
+      widget:
+        type: sonarr
+        url: https://anime.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_SONARR_ANIME_API_KEY}}
+        enableQueue: false
   - Prowlarr:
       href: https://indexer.home.pcb060.dev
       description: Manage and sync torrent/Usenet indexers used by your media automation tools.
@@ -118,6 +118,16 @@
       description: Automate the cleanup of unwanted or blocked files in Sonarr, Radarr and download clients like qBittorrent.
       icon: cleanuparr
 
+- Nginx Proxy Manager:
+  - Nginx Proxy Manager:
+      href: https://npm.home.pcb060.dev
+      description: Manage domain routing and HTTPS certificates for all self-hosted services.
+      icon: nginx-proxy-manager
+      widget:
+        type: npm
+        url: https://npm.home.pcb060.dev
+        username: {{HOMEPAGE_VAR_NPM_USR}}
+        password: {{HOMEPAGE_VAR_NPM_PWD}}
 
 - Monitor:
   - System:
