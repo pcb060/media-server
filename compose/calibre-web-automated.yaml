@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TRUSTED_PROXY_COUNT=2
     env_file:
-      - calibre-web-automated.env
+      - ./envs/calibre-web-automated.env
     volumes:
       - ../configs/calibre-web-automated:/config
       - ../media/downloads/books:/cwa-book-ingest

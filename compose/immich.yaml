@@ -3,7 +3,7 @@ services:
     image: ghcr.io/immich-app/immich-server:v3.1.0
     container_name: immich-server
     env_file:
-      - immich.env
+      - ./envs/immich.env
     environment:
       - TZ=Europe/Rome
     volumes:
@@ -22,7 +22,7 @@ services:
     container_name: immich-machine-learning
     image: ghcr.io/immich-app/immich-machine-learning:v3.1.0
     env_file:
-      - immich.env
+      - ./envs/immich.env
     volumes:
       - immich-model-cache:/cache
     restart: always
@@ -40,7 +40,7 @@ services:
     container_name: immich-postgres
     image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
     env_file:
-      - immich.env
+      - ./envs/immich.env
     environment:
       - POSTGRES_INITDB_ARGS=--data-checksums
     volumes:

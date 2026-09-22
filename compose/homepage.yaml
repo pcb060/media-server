@@ -6,7 +6,7 @@ services:
       - TZ=Europe/Rome
       - HOMEPAGE_ALLOWED_HOSTS=home.pcb060.dev
     env_file:
-      - homepage.env
+      - ./envs/homepage.env
     ports:
       - 3000:3000
     volumes:
