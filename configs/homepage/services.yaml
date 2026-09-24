@@ -1,5 +1,6 @@
 ---
-- Enjoy:
+#--- Media Tab ---#
+- Library:
   - Jellyfin:
       href: https://watch.home.pcb060.dev
       description: Watch movies, TV shows and anime from your personal media library.
@@ -50,6 +51,8 @@
       description: Find and download ebooks and audiobooks.
       icon: shelfmark
 
+
+#--- Utils Tab ---#
 - Utils:
   - GigioPT (Open WebUI):
       href: https://chat.home.pcb060.dev
@@ -63,6 +66,19 @@
       href: https://cyberchef.home.pcb060.dev
       description: The Cyber Swiss Army Knife for encoding, encryption and data analysis.
       icon: chef-hat
+
+
+#--- Admin Tab ---#
+- Nginx Proxy Manager:
+  - Nginx Proxy Manager:
+      href: https://npm.home.pcb060.dev
+      description: Manage domain routing and HTTPS certificates for all self-hosted services.
+      icon: nginx-proxy-manager
+      widget:
+        type: npm
+        url: https://npm.home.pcb060.dev
+        username: {{HOMEPAGE_VAR_NPM_USR}}
+        password: {{HOMEPAGE_VAR_NPM_PWD}}
 
 - Media Tools:
   - Radarr:
@@ -126,17 +142,6 @@
       description: Automate the cleanup of unwanted or blocked files in Sonarr, Radarr and download clients like qBittorrent.
       icon: cleanuparr
 
-- Nginx Proxy Manager:
-  - Nginx Proxy Manager:
-      href: https://npm.home.pcb060.dev
-      description: Manage domain routing and HTTPS certificates for all self-hosted services.
-      icon: nginx-proxy-manager
-      widget:
-        type: npm
-        url: https://npm.home.pcb060.dev
-        username: {{HOMEPAGE_VAR_NPM_USR}}
-        password: {{HOMEPAGE_VAR_NPM_PWD}}
-
 - Monitor:
   - System:
       widget:
@@ -185,7 +190,6 @@
         url: http://netalertx.home.pcb060.dev
         key: yournetalertxapitoken
         version: 2
-
 - Tailscale:
   - Media Server:
       widget:

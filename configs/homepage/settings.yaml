@@ -14,13 +14,13 @@ disableIndexing: true # disables search engine indexing
 
 
 layout:
-  Enjoy:
-    tab: Library
+  Library:
+    tab: Media
     header: false
     style: row
     columns: 1
   Find:
-    tab: Library
+    tab: Media
     style: row
     columns: 1
 
@@ -30,16 +30,15 @@ layout:
     style: row
     columns: 1
 
-  Media Tools:
-    tab: Media Tools
-    style: row
-    columns: 2
-
   Nginx Proxy Manager:
     tab: Admin
     header: false
     style: row
     columns: 1
+  Media Tools:
+    tab: Admin
+    style: row
+    columns: 2
   Monitor:
     tab: Admin
     style: row
