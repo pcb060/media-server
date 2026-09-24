@@ -65,7 +65,7 @@
   - CyberChef:
       href: https://cyberchef.home.pcb060.dev
       description: The Cyber Swiss Army Knife for encoding, encryption and data analysis.
-      icon: chef-hat
+      icon: mdi-chef-hat
 
 
 #--- Admin Tab ---#
@@ -187,8 +187,8 @@
   - NetAlertX:
       widget:
         type: netalertx
-        url: http://netalertx.home.pcb060.dev
-        key: yournetalertxapitoken
+        url: https://api.netalertx.home.pcb060.dev
+        key: {{HOMEPAGE_VAR_NETALERTX_API_KEY}}
         version: 2
 - Tailscale:
   - Media Server:
