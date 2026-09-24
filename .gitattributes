@@ -1,0 +1,17 @@
+# Treat secret-bearing files as binary so a stray commit doesn't expose
+# their contents via `git diff` / patch contexts. Only takes effect if a
+# .env / key file is ever tracked; the .gitignore should prevent that first.
+*.env -text -diff
+*.key -text -diff
+*.pem -text -diff
+secrets/** -text -diff
+
+# Example templates and dotenv references should remain diffable text.
+*.env.example text eol=lf
+
+# Normalise line endings for scripts and YAML.
+*.sh       text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
+*.toml     text eol=lf
+*.md       text eol=lf
