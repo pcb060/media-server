@@ -2,6 +2,10 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
+    network_mode: "service:gluetun"
+    depends_on:
+      gluetun:
+        condition: service_healthy
     environment:
       - TZ=Europe/Rome
       - PUID=1000
@@ -10,12 +14,6 @@ services:
     volumes:
       - ../configs/qbittorrent:/config
       - ../media/downloads:/media/downloads
-    ports:
-      - 8081:8081
     restart: unless-stopped
     labels:
       - "group=media-tools"
-
-networks:
-  media-server-network:
-    external: true
