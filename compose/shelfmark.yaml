@@ -8,6 +8,8 @@ services:
     ports:
       - 8084:8084
     restart: unless-stopped
+    labels:
+      - "group=media"
 
 networks:
   media-server-network:

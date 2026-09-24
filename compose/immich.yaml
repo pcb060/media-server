@@ -15,6 +15,8 @@ services:
       - redis
       - database
     restart: always
+    labels:
+      - "group=library"
     healthcheck:
       disable: false
 
@@ -26,12 +28,16 @@ services:
     volumes:
       - immich-model-cache:/cache
     restart: always
+    labels:
+      - "group=library"
     healthcheck:
       disable: false
 
   redis:
     container_name: immich_redis
     image: docker.io/valkey/valkey:9@sha256:8e8d64b405ce18f41b8e5ee20aa4687a8ed0022d1298f2ce31cdcf3a76e09411
+    labels:
+      - "group=library"
     healthcheck:
       test: redis-cli ping || exit 1
     restart: always
@@ -47,6 +53,8 @@ services:
       - ../configs/immich/pgdata:/var/lib/postgresql/data
     shm_size: 128mb
     restart: always
+    labels:
+      - "group=library"
     healthcheck:
       disable: false
 

@@ -5,6 +5,8 @@ services:
     ports:
       - 8191:8191
     restart: unless-stopped
+    labels:
+      - "group=core"
 
 networks:
   media-server-network:

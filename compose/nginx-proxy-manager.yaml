@@ -12,6 +12,8 @@ services:
       - ../configs/nginx-proxy-manager/data:/data
       - ../configs/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
+    labels:
+      - "group=core"
 
 networks:
   media-server-network:

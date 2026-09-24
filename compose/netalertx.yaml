@@ -16,3 +16,5 @@ services:
       - PORT=20211
     restart: unless-stopped
     network_mode: host
+    labels:
+      - "group=network"

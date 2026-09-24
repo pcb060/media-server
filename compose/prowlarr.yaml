@@ -11,6 +11,8 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
+    labels:
+      - "group=media-tools"
 
 networks:
   media-server-network:

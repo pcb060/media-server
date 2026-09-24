@@ -5,6 +5,8 @@ services:
     ports:
       - '13020:8080'
     restart: unless-stopped
+    labels:
+      - "group=utils"
 
 networks:
   media-server-network:

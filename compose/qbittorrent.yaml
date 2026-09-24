@@ -13,6 +13,8 @@ services:
     ports:
       - 8081:8081
     restart: unless-stopped
+    labels:
+      - "group=media-tools"
 
 networks:
   media-server-network:

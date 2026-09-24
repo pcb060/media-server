@@ -22,6 +22,8 @@ services:
     tmpfs:
       - /tmp
     restart: unless-stopped
+    labels:
+      - "group=monitor"
 
 networks:
   media-server-network:
