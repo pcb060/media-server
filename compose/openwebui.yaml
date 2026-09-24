@@ -9,8 +9,12 @@ services:
       - DEFAULT_ROLES=user
       - DEFAULT_USER_ROLE=user
       - WEBUI_NAME=GigioPT
-    env_file:
-      - ./envs/openwebui.env
+      - WEBUI_URL=https://chat.home.pcb060.dev
+      - CORS_ALLOW_ORIGIN=https://chat.home.pcb060.dev
+      - WEBUI_SESSION_COOKIE_SECURE=true
+      - WEBUI_AUTH_COOKIE_SECURE=true
+      - WEBUI_SESSION_COOKIE_SAME_SITE=lax
+      - WEBUI_AUTH_COOKIE_SAME_SITE=lax
     volumes:
       - ../configs/openwebui:/app/backend/data
     ports:
