@@ -59,6 +59,10 @@
       href: https://pdf.home.pcb060.dev
       description: A powerful, privacy-first, client-side PDF toolkit
       icon: bentopdf
+  - CyberChef:
+      href: https://cyberchef.home.pcb060.dev
+      description: The Cyber Swiss Army Knife for encoding, encryption and data analysis.
+      icon: chef-hat
 
 - Media Tools:
   - Radarr:

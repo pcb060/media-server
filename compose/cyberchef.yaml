@@ -1,0 +1,11 @@
+services:
+  cyberchef:
+    image: ghcr.io/gchq/cyberchef:latest
+    container_name: cyberchef
+    ports:
+      - '13020:8080'
+    restart: unless-stopped
+
+networks:
+  media-server-network:
+    external: true
