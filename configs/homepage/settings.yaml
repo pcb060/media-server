@@ -49,6 +49,11 @@ layout:
     tab: Admin
     style: row
     columns: 1
+  Network:
+    header: true
+    tab: Admin
+    style: row
+    columns: 1
   Tailscale:
     icon: tailscale
     tab: Admin

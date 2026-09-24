@@ -178,6 +178,14 @@
         metric: disk:sdb1
         version: 4
 
+- Network:
+  - NetAlertX:
+      widget:
+        type: netalertx
+        url: http://netalertx.home.pcb060.dev
+        key: yournetalertxapitoken
+        version: 2
+
 - Tailscale:
   - Media Server:
       widget:
