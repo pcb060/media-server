@@ -185,6 +185,9 @@
 
 - Network:
   - NetAlertX:
+      href: https://netalertx.home.pcb060.dev
+      description: Discover and track devices on your LAN.
+      icon: netalertx
       widget:
         type: netalertx
         url: https://api.netalertx.home.pcb060.dev
