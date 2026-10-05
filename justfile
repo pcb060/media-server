@@ -39,8 +39,14 @@ restart group="":
 update:
     #!/usr/bin/env bash
     set -e
+    # Pull images directly per file instead of via docker-compose, because some
+    # compose files reference services (e.g. gluetun) defined in other files via
+    # depends_on / network_mode, and isolated `docker-compose -f <file> pull`
+    # fails to resolve those cross-file dependencies.
     for f in compose/*.yaml; do
-        docker-compose -p media-server -f "$f" pull
+        grep -E '^    image:' "$f" | awk '{print $2}' | while read -r img; do
+            [ -n "$img" ] && docker pull "$img"
+        done
     done
     just start
     docker image prune -f
