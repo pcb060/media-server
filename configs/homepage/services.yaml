@@ -65,7 +65,7 @@
   - CyberChef:
       href: https://cyberchef.home.pcb060.dev
       description: The Cyber Swiss Army Knife for encoding, encryption and data analysis.
-      icon: mdi-chef-hat
+      icon: cyberchef
 
 
 #--- Admin Tab ---#
@@ -136,7 +136,7 @@
   - Profilarr:
       href: https://profilarr.home.pcb060.dev
       description: Configure and maintain consistent quality and release profiles across your media services.
-      icon: profilarr
+      icon: sh-profilarr.svg
   - Cleanuparr:
       href: https://cleanup.home.pcb060.dev
       description: Automate the cleanup of unwanted or blocked files in Sonarr, Radarr and download clients like qBittorrent.
