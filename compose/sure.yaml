@@ -1,0 +1,69 @@
+services:
+  sure-web:
+    image: ghcr.io/we-promise/sure:stable
+    container_name: sure-web
+    env_file:
+      - ./envs/sure.env
+    volumes:
+      - ../configs/sure/storage:/rails/storage
+    ports:
+      - 13030:3000
+    depends_on:
+      sure-db:
+        condition: service_healthy
+      sure-redis:
+        condition: service_healthy
+    restart: unless-stopped
+    labels:
+      - "group=utils"
+
+  sure-worker:
+    image: ghcr.io/we-promise/sure:stable
+    container_name: sure-worker
+    command: bundle exec sidekiq
+    env_file:
+      - ./envs/sure.env
+    volumes:
+      - ../configs/sure/storage:/rails/storage
+    depends_on:
+      sure-db:
+        condition: service_healthy
+      sure-redis:
+        condition: service_healthy
+    restart: unless-stopped
+    labels:
+      - "group=utils"
+
+  sure-db:
+    image: postgres:16
+    container_name: sure-db
+    env_file:
+      - ./envs/sure.env
+    volumes:
+      - ../configs/sure/postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    labels:
+      - "group=utils"
+
+  sure-redis:
+    image: redis:latest
+    container_name: sure-redis
+    volumes:
+      - ../configs/sure/redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    labels:
+      - "group=utils"
+
+networks:
+  media-server-network:
+    external: true

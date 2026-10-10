@@ -58,6 +58,10 @@
       href: https://chat.home.pcb060.dev
       description: Chat interface for AI models (ChatGPT-style).
       icon: open-webui
+  - Sure:
+      href: https://budget.home.pcb060.dev
+      description: Personal finance and wealth management.
+      icon: sure
   - BentoPDF:
       href: https://pdf.home.pcb060.dev
       description: A powerful, privacy-first, client-side PDF toolkit
